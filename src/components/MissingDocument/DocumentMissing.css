@@ -1,0 +1,19 @@
+.document-missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Style heading */
+.document-missing h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Style paragraph */
+.document-missing p {
+  font-size: 1rem;
+}

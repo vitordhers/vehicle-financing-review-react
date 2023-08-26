@@ -1,0 +1,67 @@
+.paper-a4 {
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  max-width: 590px;
+}
+
+.head {
+  text-align: left;
+}
+
+.col-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 0px 15px;
+  text-align: left;
+}
+
+.totals td {
+  border: 0px;
+}
+h3 {
+  text-align: left;
+  color: olive;
+}
+.totals td {
+  color: olive;
+}
+.totals td:first-child {
+  text-align: left;
+}
+
+h4 {
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border-top: 0px;
+  border-bottom: 0px;
+  border-color: olive;
+  border-width: 1px;
+  border-spacing: 0px;
+}
+
+thead {
+  background-color: olive;
+  color: #fff;
+}
+
+.white-tr {
+  background-color: #fff;
+  color: #4a6100;
+}
+
+.green-tr {
+  background-color: #4a6100;
+  color: #fff;
+}

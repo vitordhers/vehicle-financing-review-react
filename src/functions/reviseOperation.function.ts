@@ -6,7 +6,8 @@ export const reviseOperation = (
   revisedPayments: Payment[],
   actualPayments: Payment[],
   installments: number,
-  paidInstallments: number
+  paidInstallments: number,
+  firstInstallmentTotal: number
 ) => {
   let effectivePayments = [...actualPayments];
 
@@ -47,9 +48,12 @@ export const reviseOperation = (
     0
   );
 
+  const agreedTotal = installments * firstInstallmentTotal;
+
   const revisedOperation: RevisedOperation = {
     paymentDifferences,
     revisedInstallmentsTotal: revisedInstallmentsTotal,
+    agreedTotal,
     effectiveInstallmentsTotal: effectiveInstallmentsTotal,
     differenceTotal: differenceTotal,
   };

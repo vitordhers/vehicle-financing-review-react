@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CalculationsLog } from "./pages/CalculationsLog";
+import { Logs } from "./pages/Logs";
 import { db, analytics } from "./firebase-connection";
 import { Context } from "./Context";
 
@@ -10,8 +10,8 @@ function App() {
     {
       key: "calculos",
       title: "Cálculos Revisionais",
-      path: "calculos/:uuid",
-      component: <CalculationsLog />,
+      path: "/:uuid",
+      component: <Logs />,
     },
   ];
 

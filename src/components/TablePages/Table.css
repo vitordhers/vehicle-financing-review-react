@@ -1,3 +1,33 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border-top: 0px;
+  border-bottom: 0px;
+  border-color: olive;
+  border-width: 1px;
+  border-spacing: 0px;
+}
+
+thead {
+  background-color: olive;
+  color: #fff;
+}
+
+.white-tr {
+  background-color: #fff;
+  color: #4a6100;
+}
+
+.green-tr {
+  background-color: #4a6100;
+  color: #fff;
+}
+
 .hidden-top {
   border-top: 0px;
 }

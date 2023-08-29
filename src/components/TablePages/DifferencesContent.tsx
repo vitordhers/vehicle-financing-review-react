@@ -11,13 +11,13 @@ export interface DifferencesContentProps {
 
 export const DifferencesContent: React.FC<DifferencesContentProps> = ({
   revisedOperation,
-  isHtml
+  isHtml,
 }) => {
   const { paymentDifferences } = revisedOperation;
-  const hasOtherPages = paymentDifferences.length >= 15;
+  const hasOtherPages = paymentDifferences.length >= 35;
 
   const paymentDifferencesClone = [...paymentDifferences];
-  const firstPageDifferences = paymentDifferencesClone.splice(0, 15);
+  const firstPageDifferences = paymentDifferencesClone.splice(0, 35);
 
   const otherPagesGroups: OtherPagesDifferenceGroup[] = [];
   if (hasOtherPages) {
@@ -27,6 +27,7 @@ export const DifferencesContent: React.FC<DifferencesContentProps> = ({
       const group: OtherPagesDifferenceGroup = {
         paymentDifferences: groupRevisedDifferences,
         isLastPage,
+        key: `key-${i}`,
       };
       if (group.paymentDifferences.length) {
         otherPagesGroups.push(group);
@@ -36,36 +37,49 @@ export const DifferencesContent: React.FC<DifferencesContentProps> = ({
 
   return (
     <>
-      <DifferencesFirstPage
-        paymentDifferences={firstPageDifferences}
-        paymentDifferencesTotal={paymentDifferences.length + 1}
-        isHtml={isHtml}
-        revisedInstallmentsTotal={revisedOperation.revisedInstallmentsTotal}
-        effectiveInstallmentsTotal={revisedOperation.effectiveInstallmentsTotal}
-        differenceTotal={revisedOperation.differenceTotal}
-      />
+      <div id="page-calculations-2-1" className={`${isHtml ? "" : "pdf"}`}>
+        <DifferencesFirstPage
+          paymentDifferences={firstPageDifferences}
+          paymentDifferencesTotal={paymentDifferences.length + 1}
+          isHtml={isHtml}
+          revisedInstallmentsTotal={revisedOperation.revisedInstallmentsTotal}
+          effectiveInstallmentsTotal={
+            revisedOperation.effectiveInstallmentsTotal
+          }
+          differenceTotal={revisedOperation.differenceTotal}
+        />
+      </div>
 
       {hasOtherPages &&
         otherPagesGroups.map((g, i) => (
-          <DifferencesOtherPage
-            key={i}
-            paymentDifferences={g.paymentDifferences}
-            isLastPage={g.isLastPage}
-            paymentDifferencesTotal={paymentDifferences.length + 1}
-            isHtml={isHtml}
-            invertLineColor={i % 2 === 0}
-            revisedInstallmentsTotal={revisedOperation.revisedInstallmentsTotal}
-            effectiveInstallmentsTotal={
-              revisedOperation.effectiveInstallmentsTotal
-            }
-            differenceTotal={revisedOperation.differenceTotal}
-          />
+          <div
+            key={g.key}
+            id={`page-calculations-2-${i + 1}`}
+            className={`${isHtml ? "" : "pdf"}`}
+          >
+            <DifferencesOtherPage
+              key={i}
+              paymentDifferences={g.paymentDifferences}
+              isLastPage={g.isLastPage}
+              paymentDifferencesTotal={paymentDifferences.length + 1}
+              isHtml={isHtml}
+              invertLineColor={i % 2 === 0}
+              revisedInstallmentsTotal={
+                revisedOperation.revisedInstallmentsTotal
+              }
+              effectiveInstallmentsTotal={
+                revisedOperation.effectiveInstallmentsTotal
+              }
+              differenceTotal={revisedOperation.differenceTotal}
+            />
+          </div>
         ))}
     </>
   );
 };
 
 interface OtherPagesDifferenceGroup {
+  key: string;
   paymentDifferences: PaymentDifference[];
   isLastPage: boolean;
 }

@@ -38,7 +38,7 @@ export const CalculationsContent: React.FC<CalculationsContentProps> = ({
 
   return (
     <>
-      <div id="page1-1">
+      <div id="page-calculations1-1" className={`${isHtml ? "" : "pdf"}`}>
         <CalculationsFirstPage
           revisedPayments={firstPagePayments}
           review={review}
@@ -49,7 +49,11 @@ export const CalculationsContent: React.FC<CalculationsContentProps> = ({
 
       {hasOtherPages &&
         otherPagesGroups.map((g, i) => (
-          <div key={g.key} id={`page1-${i + 1}`}>
+          <div
+            key={g.key}
+            id={`page-calculations-1-${i + 1}`}
+            className={`${isHtml ? "" : "pdf"}`}
+          >
             <CalculationsOtherPage
               revisedPayments={g.revisedPayments}
               isLastPage={g.isLastPage}
